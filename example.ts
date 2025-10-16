@@ -2,7 +2,7 @@ import { PayifClient, type CheckoutSessionCreate } from "./src/index";
 
 // Initialize the Payif client
 const client = new PayifClient({
-  apiKey: "your-api-key-here",
+  apiKey: "pk_c3ae89c984f29ad40b5f7063fada6f3c98b82c6eaba209b525abe4798f2d5b15",
   baseUrl: "http://127.0.0.1:5001/demo-project/us-central1/api", // optional
 });
 
@@ -36,7 +36,6 @@ const sessionData: CheckoutSessionCreate = {
     recipient: "0x1234567890123456789012345678901234567890", // Ethereum address
     redirectUrl: "https://your-app.com/checkout/success",
   },
-  templateId: "default-template", // optional
 };
 
 // Create a checkout session
