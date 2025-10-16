@@ -1,16 +1,34 @@
 {
-  "name": "payif",
-  "module": "index.ts",
+  "name": "@payif/sdk",
+  "version": "1.0.0",
+  "description": "Simple SDK for Payif API",
   "type": "module",
-  "main": "index.js",
-  "types": "index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "bunup",
-    "dev": "bunup --watch"
+    "dev": "bunup --watch",
+    "prepublishOnly": "bun run build"
   },
+  "keywords": [
+    "payif",
+    "payment",
+    "sdk"
+  ],
   "devDependencies": {
     "@types/bun": "latest",
-    "bunup": "^0.14.20"
+    "bunup": "^0.14.20",
+    "prettier": "^3.6.2"
   },
   "peerDependencies": {
     "typescript": "^5"

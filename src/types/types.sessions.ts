@@ -1,6 +1,5 @@
 import type { Hex } from "viem";
 
-
 export interface CheckoutSessionItem {
   name: string;
   amount: number;
@@ -30,9 +29,8 @@ export interface CheckoutSession {
   redirectUrl: string;
 }
 
-
 export type CheckoutSessionCreate = {
-  session: CheckoutSession;
+  session: Omit<CheckoutSession, "appId">;
   templateId?: string;
 };
 

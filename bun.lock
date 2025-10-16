@@ -9,6 +9,7 @@
       "devDependencies": {
         "@types/bun": "latest",
         "bunup": "^0.14.20",
+        "prettier": "^3.6.2",
       },
       "peerDependencies": {
         "typescript": "^5",
@@ -185,6 +186,8 @@
     "oxc-transform": ["oxc-transform@0.67.0", "", { "optionalDependencies": { "@oxc-transform/binding-darwin-arm64": "0.67.0", "@oxc-transform/binding-darwin-x64": "0.67.0", "@oxc-transform/binding-linux-arm-gnueabihf": "0.67.0", "@oxc-transform/binding-linux-arm64-gnu": "0.67.0", "@oxc-transform/binding-linux-arm64-musl": "0.67.0", "@oxc-transform/binding-linux-x64-gnu": "0.67.0", "@oxc-transform/binding-linux-x64-musl": "0.67.0", "@oxc-transform/binding-wasm32-wasi": "0.67.0", "@oxc-transform/binding-win32-arm64-msvc": "0.67.0", "@oxc-transform/binding-win32-x64-msvc": "0.67.0" } }, "sha512-QXwmpLfNrXZoHgIjEtDEf6lhwmvHouNtstNgg/UveczVIjo8VSzd5h25Ea96PoX9KzReJUY/qYa4QSNkJpZGfA=="],
 
     "picocolors": ["picocolors@1.1.1", "", {}, "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="],
+
+    "prettier": ["prettier@3.6.2", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ=="],
 
     "readdirp": ["readdirp@4.1.2", "", {}, "sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg=="],
 
