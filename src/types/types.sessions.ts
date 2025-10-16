@@ -1,13 +1,13 @@
 import type { Hex } from "viem";
 
-export interface CheckoutSessionItem {
+export interface CheckoutItem {
   name: string;
   amount: number;
   pricePerUnit: number;
 }
 
 export interface StreetAddress {
-  country: string;
+  country?: string;
   state: string;
   city: string;
   street: string;
@@ -16,18 +16,26 @@ export interface StreetAddress {
 
 export interface Order {
   currency: "USD" | "EUR";
-  items: CheckoutSessionItem[];
+  items: CheckoutItem[];
   deliveryAddress: StreetAddress;
   deliveryDate: number;
   deliveryCarrier: string;
 }
 
-export interface CheckoutSession {
+export interface Session<Payload> {
   appId: string;
-  order: Order;
-  recipient: Hex;
+  payment: {
+    chainId: string;
+    token: Hex;
+    amount: string;
+    recipient: Hex;
+  };
+  type: "checkout" | "generic";
+  payload: Payload;
   redirectUrl: string;
 }
+
+export type CheckoutSession = Session<Order>;
 
 export type CheckoutSessionCreate = {
   session: Omit<CheckoutSession, "appId">;
@@ -35,5 +43,16 @@ export type CheckoutSessionCreate = {
 };
 
 export type CheckoutSessionCreateResult = {
+  url: string;
+};
+
+export type GenericSession = Session<{ messageId: string }>;
+
+export type GenericSessionCreate = {
+  session: Omit<GenericSession, "appId">;
+  templateId?: string;
+};
+
+export type GenericSessionCreateResult = {
   url: string;
 };
