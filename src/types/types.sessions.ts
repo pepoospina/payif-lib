@@ -1,4 +1,5 @@
 import type { Hex } from "viem";
+import type { MessageCreate } from "./types.messages";
 
 export interface CheckoutItem {
   name: string;
@@ -22,24 +23,25 @@ export interface Order {
   deliveryCarrier: string;
 }
 
-export interface Session<Payload> {
-  appId: string;
-  payment: {
-    chainId: string;
-    token: Hex;
-    amount: string;
-    recipient: Hex;
-  };
-  type: "checkout" | "generic";
-  payload: Payload;
-  redirectUrl: string;
+export interface SessionPayment {
+  chainId: string;
+  token: Hex;
+  amount: string;
+  recipient: Hex;
 }
 
-export type CheckoutSession = Session<Order>;
+export interface Session<Payload> {
+  payment: SessionPayment;
+  payload: Payload;
+}
+
+export type CheckoutSession = Session<Order> & { redirectUrl: string };
 
 export type CheckoutSessionCreate = {
-  session: Omit<CheckoutSession, "appId">;
+  payment: SessionPayment;
+  order: Order;
   templateId?: string;
+  redirectUrl: string;
 };
 
 export type CheckoutSessionCreateResult = {
@@ -49,10 +51,16 @@ export type CheckoutSessionCreateResult = {
 export type GenericSession = Session<{ messageId: string }>;
 
 export type GenericSessionCreate = {
-  session: Omit<GenericSession, "appId">;
+  payment: SessionPayment;
+  message: MessageCreate;
   templateId?: string;
 };
 
 export type GenericSessionCreateResult = {
   url: string;
 };
+
+export interface Seller {
+  id: string; // can be userId or appId
+  name?: string;
+}
