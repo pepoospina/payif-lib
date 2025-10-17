@@ -30,12 +30,11 @@ export interface SessionPayment {
   recipient: Hex;
 }
 
-export interface Session<Payload> {
+export interface Session {
   payment: SessionPayment;
-  payload: Payload;
 }
 
-export type CheckoutSession = Session<Order> & { redirectUrl: string };
+export type CheckoutSession = Session & { order: Order; redirectUrl: string };
 
 export type CheckoutSessionCreate = {
   payment: SessionPayment;
@@ -48,7 +47,7 @@ export type CheckoutSessionCreateResult = {
   url: string;
 };
 
-export type GenericSession = Session<{ messageId: string }>;
+export type GenericSession = Session;
 
 export type GenericSessionCreate = {
   payment: SessionPayment;
