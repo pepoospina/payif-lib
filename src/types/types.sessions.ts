@@ -34,12 +34,17 @@ export interface Session {
   payment: SessionPayment;
 }
 
-export type CheckoutSession = Session & { order: Order; redirectUrl: string };
+export type CheckoutSession = Session & {
+  order: Order;
+  redirectUrl: string;
+  reviewOn: number;
+};
 
 export type CheckoutSessionCreate = {
   payment: SessionPayment;
   order: Order;
   templateId?: string;
+  reviewOn: number;
   redirectUrl: string;
 };
 
@@ -47,11 +52,12 @@ export type CheckoutSessionCreateResult = {
   url: string;
 };
 
-export type GenericSession = Session;
+export type GenericSession = Session & { reviewOn: number };
 
 export type GenericSessionCreate = {
   payment: SessionPayment;
   message: MessageCreate;
+  reviewOn: number;
   templateId?: string;
 };
 
@@ -63,3 +69,12 @@ export interface Seller {
   id: string; // can be userId or appId
   name?: string;
 }
+
+export type InitPaymentPayload = {
+  message?: MessageCreate;
+  session?: {
+    checkout?: CheckoutSessionCreate;
+    generic?: GenericSessionCreate;
+  };
+  messageId?: string;
+};

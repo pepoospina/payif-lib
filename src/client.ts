@@ -1,6 +1,7 @@
 import type {
   CheckoutSessionCreate,
   CheckoutSessionCreateResult,
+  InitPaymentPayload,
 } from "./types/types.sessions";
 
 export interface PayifClientConfig {
@@ -26,13 +27,19 @@ export class PayifClient {
       console.log("Creating checkout session...", { sessionData });
     }
 
-    const response = await fetch(`${this.baseUrl}/apps/createSession`, {
+    const paymentInit: InitPaymentPayload = {
+      session: {
+        checkout: sessionData,
+      },
+    };
+
+    const response = await fetch(`${this.baseUrl}/payments/init`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-api-key": this.apiKey,
       },
-      body: JSON.stringify(sessionData),
+      body: JSON.stringify(paymentInit),
     });
 
     if (!response.ok) {
