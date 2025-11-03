@@ -33,7 +33,7 @@ export interface FileUploaded {
 // a message is always stamped and uploaded as a file
 export interface Message {
   id: string;
-  paymentId: string;
+  paymentId?: string;
   text?: string;
   fileId: string;
 }
@@ -46,7 +46,7 @@ export interface MessageCreate {
 
 export interface MessageRead {
   id: string;
-  paymentId: string;
+  paymentId?: string;
   text?: string;
   file: UploadedFileDetails;
 }

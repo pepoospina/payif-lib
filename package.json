@@ -1,6 +1,6 @@
 {
   "name": "@payif/sdk",
-  "version": "0.0.1-beta",
+  "version": "0.0.2-beta2",
   "description": "Simple SDK for Payif API",
   "type": "module",
   "main": "dist/index.js",
